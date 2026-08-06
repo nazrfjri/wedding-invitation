@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Local Fonts */
+@import "@fontsource/inter";
+@import "@fontsource/playfair-display";
+@import "@fontsource/great-vibes";
+
+@theme {
+  --color-primary: #5A2E2E;
+  --color-secondary: #F8F5F0;
+  --color-accent: #B79D7B;
+  --color-background: #FCFAF7;
+  --color-surface: #FFFFFF;
+  
+  --color-text-primary: #2F2F2F;
+  --color-text-secondary: #6B7280;
+  --color-text-light: #FFFFFF;
+  
+  --color-border-custom: #E7E2DA;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-script: "Great Vibes", cursive;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-card: 0 10px 30px rgba(0,0,0,.08);
+  --shadow-button: 0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Global */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}

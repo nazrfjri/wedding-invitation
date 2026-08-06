@@ -1,0 +1,87 @@
+import { useState, useEffect, lazy, Suspense } from 'react';
+import Lenis from 'lenis';
+import { AudioProvider } from './contexts/AudioContext';
+import AudioPlayer from './components/ui/AudioPlayer';
+
+// Komponen initial load (Tidak di-lazy load karena langsung terlihat)
+import Cover from './features/cover/Cover';
+import Hero from './features/hero/Hero';
+
+// Lazy load komponen di bawah layar untuk optimalisasi performa awal
+const Countdown = lazy(() => import('./features/countdown/Countdown'));
+const LoveStory = lazy(() => import('./features/love-story/LoveStory'));
+const EventDetail = lazy(() => import('./features/event/EventDetail'));
+const Location = lazy(() => import('./features/location/Location'));
+const Gallery = lazy(() => import('./features/gallery/Gallery'));
+const Gift = lazy(() => import('./features/gift/Gift'));
+const Rsvp = lazy(() => import('./features/rsvp/Rsvp'));
+const Closing = lazy(() => import('./features/closing/Closing'));
+
+// Komponen Fallback saat chunk sedang di-download
+const SectionLoader = () => (
+  <div className="w-full h-32 flex items-center justify-center bg-background">
+    <div className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin opacity-50" />
+  </div>
+);
+
+function App() {
+  const [isOpened, setIsOpened] = useState(false);
+  const [lenis, setLenis] = useState(null);
+
+  useEffect(() => {
+    const lenisInstance = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      orientation: 'vertical',
+      smoothWheel: true,
+      touchMultiplier: 2,
+    });
+    
+    setLenis(lenisInstance);
+    lenisInstance.stop(); 
+
+    function raf(time) {
+      lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenisInstance.destroy();
+  }, []);
+
+  useEffect(() => {
+    if (isOpened && lenis) {
+      setTimeout(() => lenis.start(), 1000); 
+    }
+  }, [isOpened, lenis]);
+
+  return (
+    <AudioProvider>
+      <main className="max-w-md mx-auto w-full min-h-[100dvh] bg-background relative shadow-2xl overflow-x-hidden">
+        
+        <Cover isOpened={isOpened} onOpen={() => setIsOpened(true)} />
+        
+        {isOpened && (
+          <div className="relative w-full bg-background">
+            <AudioPlayer />
+            <Hero />
+            
+            {/* Suspense menahan render sampai komponen selesai di-download */}
+            <Suspense fallback={<SectionLoader />}>
+              <Countdown />
+              <LoveStory />
+              <EventDetail />
+              <Location />
+              <Gallery />
+              <Gift />
+              <Rsvp />
+              <Closing />
+            </Suspense>
+          </div>
+        )}
+      </main>
+    </AudioProvider>
+  );
+}
+
+export default App;
