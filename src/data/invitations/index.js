@@ -1,3 +1,9 @@
+import gal1 from '../../assets/images/gallery/prewed3.webp';
+import gal2 from '../../assets/images/gallery/prewed4.webp';
+import gal3 from '../../assets/images/gallery/prewed5.webp';
+import gal4 from '../../assets/images/gallery/prewed6.webp';
+import gal5 from '../../assets/images/gallery/prewed7.webp';
+
 export const invitationData = {
   couple: {
     bride: {
@@ -62,10 +68,11 @@ export const invitationData = {
     quote: "“Tidak ada yang kebetulan di dunia ini. Pertemuan kami mungkin terlihat sederhana, namun kami percaya setiap langkah telah diatur oleh Tuhan untuk mempertemukan kami pada waktu yang paling tepat.”"
   },
   gallery: [
-    { src: "/src/assets/images/gallery/prewed4.webp", alt: "Prewedding 1" },
-    { src: "/src/assets/images/gallery/prewed5.webp", alt: "Prewedding 2" },
-    { src: "/src/assets/images/gallery/prewed6.webp", alt: "Prewedding 3" },
-    { src: "/src/assets/images/gallery/prewed7.webp", alt: "Prewedding 4" },
+    { src: gal1, alt: "Prewedding 1" },
+    { src: gal2, alt: "Prewedding 2" },
+    { src: gal3, alt: "Prewedding 3" },
+    { src: gal4, alt: "Prewedding 4" },
+    { src: gal5, alt: "Prewedding 5" },
   ],
   contact: {
     whatsapp: "6281234567890",

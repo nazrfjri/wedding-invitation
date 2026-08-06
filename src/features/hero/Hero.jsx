@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { invitationData } from '../../data/invitations';
 
+import profileImage from '../../assets/images/couples/prewed3.webp';
+
 export default function Hero() {
   const { couple, event, greetings } = invitationData;
 
@@ -37,18 +39,14 @@ export default function Hero() {
         </motion.div>
 
         {/* Foto Pasangan (Lingkaran) */}
-        <motion.div 
-          variants={fadeUpVariant} 
-          className="relative mb-10 p-2 rounded-full border border-border-custom bg-surface shadow-xl"
-        >
+        <motion.div variants={fadeUpVariant} className="relative mb-10 p-2 rounded-full border border-border-custom bg-surface shadow-xl">
           <div className="w-56 h-56 rounded-full overflow-hidden relative bg-gray-100">
-            {/* Ganti dengan foto asli berdua */}
+            {/* 2. Gunakan variabel profileImage */}
             <img 
-              src="/src/assets/images/couples/prewed3.webp" 
-              alt="Putri & Zagar" 
+              src={profileImage} 
+              alt={`${couple.bride.nickname} & ${couple.groom.nickname}`}
               className="object-cover w-full h-full scale-105"
             />
-            {/* Overlay lembut */}
             <div className="absolute inset-0 bg-primary/5 rounded-full mix-blend-multiply" />
           </div>
         </motion.div>
