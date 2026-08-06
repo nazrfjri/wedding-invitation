@@ -1,8 +1,9 @@
+// src/features/countdown/Countdown.jsx
 import { motion } from 'framer-motion';
+// 1. Tambahkan CalendarPlus ke dalam import lucide-react
+import { CalendarPlus } from 'lucide-react'; 
 import { invitationData } from '../../data/invitations';
 import { useCountdown } from '../../hooks/useCountdown';
-
-// Opsional: Jika ada ornamen bunga untuk bagian bawah layar
 import floralOrnament from '../../assets/images/ornaments/floral-bottom.webp'; 
 
 export default function Countdown() {
@@ -25,13 +26,12 @@ export default function Countdown() {
   return (
     <section className="relative w-full min-h-[80dvh] flex flex-col items-center justify-center py-20 px-6 overflow-hidden bg-secondary">
       <motion.div 
-        className="z-10 flex flex-col items-center w-full max-w-sm"
+        className="relative z-10 flex flex-col items-center w-full max-w-sm"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-10%" }}
         variants={containerVariant}
       >
-        {/* Header Save The Date */}
         <motion.h2 variants={itemVariant} className="font-heading text-4xl text-primary mb-4 italic">
           Save The Date
         </motion.h2>
@@ -40,7 +40,6 @@ export default function Countdown() {
           {event.fullDate}
         </motion.p>
 
-        {/* Kotak Countdown */}
         {!isExpired ? (
           <motion.div variants={itemVariant} className="flex gap-4 sm:gap-6 justify-center w-full">
             {[
@@ -68,13 +67,25 @@ export default function Countdown() {
             </p>
           </motion.div>
         )}
+
+        {/* --- TOMBOL SAVE TO CALENDAR --- */}
+        <motion.a
+          href={event.calendarUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          variants={itemVariant}
+          className="mt-12 flex items-center justify-center gap-2 bg-primary text-white px-6 py-3.5 rounded-full font-body text-sm tracking-wide shadow-button transition-transform active:scale-[0.98] hover:bg-primary/90"
+        >
+          <CalendarPlus size={18} />
+          Simpan ke Kalender
+        </motion.a>
+        {/* ------------------------------- */}
+        
       </motion.div>
 
-      {/* Ornamen Bawah (Opsional, sesuai Mockup) */}
       <motion.img 
         src={floralOrnament} 
         alt="Floral Ornament" 
-        // Ubah -z-10 menjadi z-0 agar tidak tenggelam di belakang background
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[280px] sm:max-w-xs object-contain opacity-60 pointer-events-none z-0"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 0.2, scale: 1 }}

@@ -60,7 +60,7 @@ export default function Cover({ isOpened, onOpen }) {
             </p>
             
             {/* Menggunakan font-script (Great Vibes) */}
-            <h1 className="text-7xl sm:text-8xl font-script mb-6 tracking-normal drop-shadow-lg leading-tight">
+            <h1 className="text-7xl sm:text-8xl font-script-4 mb-6 tracking-normal drop-shadow-lg leading-tight">
               {couple.bride.nickname} 
               <br /> 
               <span className="text-5xl font-script">&</span> 
