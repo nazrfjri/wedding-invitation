@@ -74,9 +74,10 @@ export default function Countdown() {
       <motion.img 
         src={floralOrnament} 
         alt="Floral Ornament" 
-        className="absolute bottom-0 left-0 w-full object-cover opacity-80"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 0.8, y: 0 }}
+        // Ubah -z-10 menjadi z-0 agar tidak tenggelam di belakang background
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[280px] sm:max-w-xs object-contain opacity-60 pointer-events-none z-0"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 0.2, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, ease: "easeOut" }}
       />

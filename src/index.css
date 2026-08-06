@@ -3,11 +3,7 @@
 /* Local Fonts */
 @import "@fontsource/inter";
 @import "@fontsource/playfair-display";
-@import "@fontsource/great-vibes";
-@import "@fontsource/dancing-script";
-@import "@fontsource/parisienne";
 @import "@fontsource/alex-brush";
-@import "@fontsource/pinyon-script";
 
 
 @theme {
@@ -25,11 +21,7 @@
 
   --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
-  --font-script-1: "Great Vibes", cursive;
-  --font-script-2: "Dancing Script", cursive;
-  --font-script-3: "Parisienne", cursive;
   --font-script-4: "Alex Brush", cursive;
-  --font-script-5: "Pinyon Script", cursive;
 
   --radius-sm: 8px;
   --radius-md: 16px;

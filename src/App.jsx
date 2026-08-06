@@ -16,6 +16,7 @@ const Gallery = lazy(() => import('./features/gallery/Gallery'));
 const Gift = lazy(() => import('./features/gift/Gift'));
 const Rsvp = lazy(() => import('./features/rsvp/Rsvp'));
 const Closing = lazy(() => import('./features/closing/Closing'));
+const Wishes = lazy(() => import('./features/wishes/Wishes'));
 
 // Komponen Fallback saat chunk sedang di-download
 const SectionLoader = () => (
@@ -73,6 +74,7 @@ function App() {
               <EventDetail />
               <Location />
               <Gallery />
+              <Wishes />
               <Gift />
               <Rsvp />
               <Closing />
