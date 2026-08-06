@@ -39,7 +39,7 @@ export default function Cover({ isOpened, onOpen }) {
               The Wedding Of
             </p>
             
-            <h1 className="text-6xl font-script mb-6 tracking-tight drop-shadow-lg">
+            <h1 className="text-6xl font-script-4 mb-6 tracking-tight drop-shadow-lg">
               {couple.bride.nickname} 
               <br /> 
               <span className="text-4xl italic font-light">&</span> 
