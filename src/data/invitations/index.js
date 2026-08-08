@@ -26,7 +26,7 @@ export const invitationData = {
     location: "Kp. Kopo Barat RT.007/ RW.03",
     address: "Ds. Muktijaya, Kec. Cilamaya Kulon, Kab. Karawang",
     targetIsoDate: "2026-08-17T08:00:00+07:00",
-    mapUrl: "https://maps.app.goo.gl/vSybrphPErqjZuFw8",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=-6.2064601,107.5204652",
     calendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Putri+%26+Zagar&dates=20260817T010000Z/20260817T080000Z&details=Merupakan+suatu+kehormatan+dan+kebahagiaan+bagi+kami+apabila+Bapak%2FIbu%2FSaudara%2Fi+berkenan+hadir+di+acara+pernikahan+kami.&location=Kp.+Kopo+Barat+RT.007%2F+RW.03%2C+Ds.+Muktijaya%2C+Kec.+Cilamaya+Kulon%2C+Kab.+Karawang"
   },
   greetings: {
