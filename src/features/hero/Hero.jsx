@@ -53,7 +53,7 @@ export default function Hero() {
 
         {/* Nama & Tanggal */}
         <motion.div variants={fadeUpVariant}>
-          <h1 className="font-heading text-4xl text-primary mb-3">
+          <h1 className="font-script-4 text-4xl text-primary mb-3">
             {couple.bride.nickname} & {couple.groom.nickname}
           </h1>
           <div className="w-12 h-[1px] bg-accent mx-auto mb-4" />

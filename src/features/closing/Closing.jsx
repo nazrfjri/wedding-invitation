@@ -32,7 +32,7 @@ export default function Closing() {
           {closing.salam}
         </p>
 
-        <h3 className="font-heading text-3xl text-white tracking-wider drop-shadow-md">
+        <h3 className="font-script-4 text-3xl text-white tracking-wider drop-shadow-md">
           {couple.bride.nickname} & {couple.groom.nickname}
         </h3>
       </motion.div>
