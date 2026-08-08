@@ -1,10 +1,8 @@
-// api/reset-wishes.js
+// api/reset-rsvp.js
 import { createClient } from 'redis';
 
 export default async function handler(req, res) {
-  // Password token Anda
   const SECRET_KEY = 'zagar2026'; 
-  
   const token = req.query.token;
 
   if (token !== SECRET_KEY) {
@@ -12,23 +10,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Membuka koneksi ke Redis Vercel
     const client = createClient({
       url: process.env.REDIS_URL || process.env.KV_URL
     });
     
-    client.on('error', (err) => console.error('Redis Client Error', err));
     await client.connect();
-
-    // Menghapus key 'wishes'
-    await client.del('wishes');
-    
-    // Menutup koneksi dengan aman
+    await client.del('rsvps');
     await client.quit();
 
-    res.status(200).json({ message: 'Semua data ucapan berhasil di-reset!' });
+    res.status(200).json({ message: 'Semua data RSVP berhasil di-reset!' });
   } catch (error) {
     console.error("API Error:", error);
-    res.status(500).json({ error: 'Gagal me-reset data' });
+    res.status(500).json({ error: 'Gagal me-reset data RSVP' });
   }
 }
