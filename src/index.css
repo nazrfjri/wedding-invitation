@@ -14,7 +14,7 @@
   
   --color-border-custom: #E7E2DA;
 
-  /* Modern Gen Z Typography */
+  /* Typography */
   --font-heading: "Cormorant Garamond", serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
   --font-script-4: "Pinyon Script", cursive;
@@ -45,7 +45,7 @@ body {
   color: var(--color-text-primary);
   overflow-x: hidden;
   
-  /* Font Smoothing agar tulisan tipis terlihat premium dan tidak bergerigi */
+  /* Font Smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

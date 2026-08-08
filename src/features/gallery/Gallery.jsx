@@ -1,4 +1,3 @@
-// src/features/gallery/Gallery.jsx
 import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Heart, Maximize2 } from 'lucide-react';
@@ -19,21 +18,14 @@ export default function Gallery() {
   const yParallax = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   const openLightbox = (index) => {
-    // Gunakan modulo (%) agar index lightbox tetap valid sesuai jumlah foto asli
     setCurrentIndex(index % gallery.length);
     setOpen(true);
   };
 
-  // Menggandakan array 3x agar aliran foto tidak pernah putus (Seamless Infinite Loop)
   const infiniteGallery = [...gallery, ...gallery, ...gallery];
 
   return (
-    <section ref={sectionRef} className="w-full py-24 sm:py-32 bg-secondary overflow-hidden relative flex flex-col items-center">
-      
-      {/* 
-        Menyuntikkan CSS murni khusus untuk animasi berjalan.
-        Jauh lebih mulus dan tidak membebani memori HP dibanding animasi Javascript.
-      */}
+    <section ref={sectionRef} className="w-full py-24 sm:py-32 bg-secondary overflow-hidden relative flex flex-col items-center">      
       <style>
         {`
           @keyframes infinite-scroll {
@@ -70,7 +62,6 @@ export default function Gallery() {
         className="w-full relative z-10" 
         style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
       >
-        {/* Kontainer Slider - Menggunakan kelas custom dari tag <style> di atas */}
         <div className="flex gap-4 sm:gap-6 w-max animate-infinite-scroll px-4">
           
           {infiniteGallery.map((image, index) => {

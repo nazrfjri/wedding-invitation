@@ -1,4 +1,3 @@
-// src/features/story/LoveStory.jsx
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Heart, Stars, Coffee, MessageCircleHeart, Map, Gem, Crown } from 'lucide-react';
@@ -51,10 +50,8 @@ export default function LoveStory() {
         </div>
 
         <div className="relative w-full">
-          {/* Garis Vertikal: Di kiri saat mobile, bergeser ke tengah saat desktop (md) */}
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[1px] bg-border-custom md:-translate-x-1/2" />
           
-          {/* Garis Dinamis Mengalir */}
           <motion.div 
             className="absolute left-6 md:left-1/2 top-0 w-[2px] bg-gradient-to-b from-accent/20 via-accent to-accent/20 md:-translate-x-1/2 origin-top"
             style={{ height: lineHeight }}
@@ -73,14 +70,12 @@ export default function LoveStory() {
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.8, ease: cinematicEase, delay: 0.1 }}
               >
-                {/* Node Titik Ikon di Garis */}
                 <div className={`absolute left-6 md:left-auto ${
                   isEven ? 'md:right-0 md:translate-x-1/2' : 'md:left-0 md:-translate-x-1/2'
                 } top-0 w-8 h-8 -translate-x-1/2 flex items-center justify-center bg-background rounded-full border-4 border-surface shadow-[0_0_15px_rgba(183,157,123,0.3)] z-10`}>
                   {getStoryIcon(index)}
                 </div>
 
-                {/* Konten Kartu */}
                 <div className="bg-surface/60 backdrop-blur-sm p-6 sm:p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 transition-colors duration-500 text-left md:text-inherit">
                   <span className="font-heading text-xl sm:text-2xl italic font-light text-primary block mb-2 opacity-90">
                     {story.date}
@@ -97,7 +92,6 @@ export default function LoveStory() {
           })}
         </div>
 
-        {/* Kutipan Penutup */}
         <motion.div 
           className="mt-20 sm:mt-24 text-center px-4 max-w-xl"
           initial={{ opacity: 0, y: 30 }}

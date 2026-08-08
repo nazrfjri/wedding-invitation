@@ -1,4 +1,3 @@
-// src/features/closing/Closing.jsx
 import { motion } from 'framer-motion';
 import { invitationData } from '../../data/invitations';
 import closingImage from '../../assets/images/couples/prewed1.webp'; 
@@ -22,9 +21,7 @@ export default function Closing() {
   };
 
   return (
-    <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center py-20 px-6 overflow-hidden bg-black">
-      
-      {/* Background Image dengan Slow Cinematic Zoom */}
+    <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center py-20 px-6 overflow-hidden bg-black">      
       <motion.div 
         className="absolute inset-0 w-full h-full bg-cover bg-center will-change-transform"
         style={{ backgroundImage: `url(${closingImage})` }}
@@ -33,7 +30,6 @@ export default function Closing() {
         transition={{ duration: 25, ease: "easeOut" }}
       />
 
-      {/* Overlay Gradient Premium: Lebih pekat di atas dan bawah, sedikit transparan di tengah */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/80" />
 
       <motion.div 

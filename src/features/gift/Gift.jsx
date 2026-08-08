@@ -1,4 +1,3 @@
-// src/features/gift/Gift.jsx
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gift as GiftIcon, Copy, CheckCircle2, CreditCard, Wallet } from 'lucide-react';

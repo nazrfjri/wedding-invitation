@@ -2,23 +2,18 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import Lenis from 'lenis';
 import { AudioProvider } from './contexts/AudioContext';
 import AudioPlayer from './components/ui/AudioPlayer';
-
-// Komponen initial load (Tidak di-lazy load karena langsung terlihat)
 import Cover from './features/cover/Cover';
 import Hero from './features/hero/Hero';
 
-// Lazy load komponen di bawah layar untuk optimalisasi performa awal
 const Countdown = lazy(() => import('./features/countdown/Countdown'));
 const LoveStory = lazy(() => import('./features/love-story/LoveStory'));
 const EventLocation = lazy(() => import('./features/event/EventLocation'));
-// const Location = lazy(() => import('./features/location/Location'));
 const Gallery = lazy(() => import('./features/gallery/Gallery'));
 const Gift = lazy(() => import('./features/gift/Gift'));
 const Rsvp = lazy(() => import('./features/rsvp/Rsvp'));
 const Closing = lazy(() => import('./features/closing/Closing'));
 const Wishes = lazy(() => import('./features/wishes/Wishes'));
 
-// Komponen Fallback saat chunk sedang di-download
 const SectionLoader = () => (
   <div className="w-full h-32 flex items-center justify-center bg-background">
     <div className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin opacity-50" />
@@ -65,14 +60,11 @@ function App() {
         {isOpened && (
           <div className="relative w-full bg-background">
             <AudioPlayer />
-            <Hero />
-            
-            {/* Suspense menahan render sampai komponen selesai di-download */}
+            <Hero />            
             <Suspense fallback={<SectionLoader />}>
               <Countdown />
               <LoveStory />
               <EventLocation />
-              {/* <Location /> */}
               <Gallery />
               <Rsvp />
               <Gift />

@@ -1,4 +1,3 @@
-// src/features/cover/Cover.jsx
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAudio } from '../../contexts/AudioContext';
 import { invitationData } from '../../data/invitations';
@@ -63,7 +62,6 @@ export default function Cover({ isOpened, onOpen }) {
             initial="hidden"
             animate="visible"
           >
-            {/* Teks Pendukung: Micro-typography, Light, Wide Tracking */}
             <motion.div variants={itemVariants} className="mb-12 flex flex-col items-center w-full">
               <p className="font-body text-[9px] sm:text-[10px] font-light text-white/60 mb-3 tracking-[0.4em] uppercase">
                 Kepada Yth.
@@ -78,7 +76,6 @@ export default function Cover({ isOpened, onOpen }) {
               The Wedding Of
             </motion.p>
             
-            {/* Teks Utama: Massive, Elegant Script dipadu Serif Italic */}
             <motion.h1 variants={itemVariants} className="text-7xl sm:text-8xl font-script-4 mb-2 tracking-normal drop-shadow-2xl leading-none">
               {couple.bride.nickname} 
               <br /> 

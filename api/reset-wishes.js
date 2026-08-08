@@ -1,8 +1,6 @@
-// api/reset-wishes.js
 import { createClient } from 'redis';
 
 export default async function handler(req, res) {
-  // Password token Anda
   const SECRET_KEY = 'zagar2026'; 
   
   const token = req.query.token;
@@ -12,7 +10,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Membuka koneksi ke Redis Vercel
     const client = createClient({
       url: process.env.REDIS_URL || process.env.KV_URL
     });
@@ -20,10 +17,7 @@ export default async function handler(req, res) {
     client.on('error', (err) => console.error('Redis Client Error', err));
     await client.connect();
 
-    // Menghapus key 'wishes'
-    await client.del('wishes');
-    
-    // Menutup koneksi dengan aman
+    await client.del('wishes');    
     await client.quit();
 
     res.status(200).json({ message: 'Semua data ucapan berhasil di-reset!' });

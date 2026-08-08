@@ -1,4 +1,5 @@
 import { createContext, useState, useRef, useEffect, useContext } from 'react';
+import bgmAudio from '../assets/audio/bgm.mp3';
 
 const AudioContext = createContext();
 
@@ -7,8 +8,7 @@ export function AudioProvider({ children }) {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    // Pastikan path ini sesuai dengan file Anda di src/assets/audio/
-    audioRef.current = new Audio('/src/assets/audio/bgm.mp3'); 
+    audioRef.current = new Audio(bgmAudio); 
     audioRef.current.loop = true;
 
     return () => {

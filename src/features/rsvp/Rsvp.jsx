@@ -1,4 +1,3 @@
-// src/features/rsvp/Rsvp.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -74,7 +73,6 @@ export default function Rsvp() {
           </p>
         </div>
 
-        {/* Dashboard Mini Stats */}
         <div className="bg-surface/50 backdrop-blur-sm border border-border-custom p-5 rounded-[2rem] mb-10 flex items-center justify-between shadow-[0_10px_40px_rgba(0,0,0,0.02)]">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center border border-border-custom">
@@ -87,7 +85,6 @@ export default function Rsvp() {
           </div>
         </div>
 
-        {/* Form RSVP Glassmorphism */}
         <div className="bg-surface p-8 sm:p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-primary/5">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             

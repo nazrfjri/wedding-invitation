@@ -1,4 +1,3 @@
-// src/features/wishes/Wishes.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -60,7 +59,6 @@ export default function Wishes() {
 
   return (
     <section className="w-full py-24 px-6 bg-secondary flex flex-col items-center overflow-hidden relative">
-      {/* Background Ornament */}
       <div className="absolute bottom-0 left-0 w-[150%] h-64 bg-gradient-to-t from-background to-transparent blur-2xl pointer-events-none translate-y-1/2 -translate-x-1/4" />
 
       <motion.div 
@@ -83,10 +81,7 @@ export default function Wishes() {
           </p>
         </div>
 
-        {/* Card Utama (Satu Kolom Penuh) */}
-        <div className="w-full bg-surface/80 backdrop-blur-md border border-border-custom rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col">
-          
-          {/* Bagian Atas: Form Input */}
+        <div className="w-full bg-surface/80 backdrop-blur-md border border-border-custom rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col">          
           <div className="w-full p-6 sm:p-8 border-b border-border-custom bg-background/30">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <input 
@@ -123,7 +118,6 @@ export default function Wishes() {
             </form>
           </div>
 
-          {/* Bagian Bawah: List Ucapan */}
           <div className="w-full relative bg-secondary/20">
             <div className="py-5 px-6 sm:px-8 flex items-center justify-between border-b border-border-custom/50">
               <span className="font-heading text-xl italic text-primary">Daftar Ucapan</span>
@@ -169,7 +163,6 @@ export default function Wishes() {
               )}
             </div>
             
-            {/* Fade Out Overlay di bawah list agar scroll terlihat elegan */}
             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-surface to-transparent pointer-events-none rounded-b-[2.5rem]" />
           </div>
 

@@ -1,4 +1,3 @@
-// api/reset-rsvp.js
 import { createClient } from 'redis';
 
 export default async function handler(req, res) {

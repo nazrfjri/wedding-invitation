@@ -25,10 +25,8 @@ export function useCountdown(targetDate) {
       };
     };
 
-    // Hitung seketika saat komponen dimuat
     setTimeLeft(calculateTimeLeft());
 
-    // Update setiap 1 detik
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);

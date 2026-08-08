@@ -1,4 +1,3 @@
-// api/rsvp.js
 import { createClient } from 'redis';
 
 let redisClient;
@@ -27,7 +26,6 @@ export default async function handler(req, res) {
       
       rsvps.forEach(item => {
         if (item.attendance === 'Hadir') {
-          // Menambahkan angka dari jumlahKehadiran (pastikan tipe datanya Number)
           totalHadir += Number(item.jumlahKehadiran) || 0; 
         } 
         else if (item.attendance === 'Tidak Hadir') {
@@ -44,7 +42,6 @@ export default async function handler(req, res) {
         id: Date.now(),
         name,
         attendance,
-        // Jika tidak hadir, jumlah otomatis 0. Jika hadir, simpan angkanya.
         jumlahKehadiran: attendance === 'Hadir' ? Number(jumlahKehadiran) : 0, 
         message,
         createdAt: new Date().toISOString()

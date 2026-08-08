@@ -1,4 +1,3 @@
-// src/features/countdown/Countdown.jsx
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { CalendarPlus } from 'lucide-react'; 
@@ -11,7 +10,6 @@ export default function Countdown() {
   const { days, hours, minutes, seconds, isExpired } = useCountdown(event.targetIsoDate);
   const sectionRef = useRef(null);
 
-  // Efek Parallax dan Rotasi pada Ornamen Bunga saat discroll
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -35,9 +33,7 @@ export default function Countdown() {
   };
 
   return (
-    <section ref={sectionRef} className="relative w-full min-h-[85dvh] flex flex-col items-center justify-center py-24 px-6 overflow-hidden bg-secondary">
-      
-      {/* Ornamen Latar dengan Dinamika Parallax */}
+    <section ref={sectionRef} className="relative w-full min-h-[85dvh] flex flex-col items-center justify-center py-24 px-6 overflow-hidden bg-secondary">      
       <motion.img 
         src={floralOrnament} 
         alt="Floral Ornament" 
@@ -75,14 +71,12 @@ export default function Countdown() {
               { label: 'Detik', value: seconds }
             ].map((time, index) => (
               <div key={index} className="flex flex-col items-center">
-                {/* Kotak Angka: Glassmorphism Elegan */}
                 <div className="w-16 h-20 sm:w-20 sm:h-24 bg-surface/40 backdrop-blur-md rounded-[1.25rem] shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex items-center justify-center border border-primary/10 mb-4 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <span className="font-heading text-3xl sm:text-4xl text-primary font-light">
                     {time.value.toString().padStart(2, '0')}
                   </span>
                 </div>
-                {/* Teks Label: Micro-typography */}
                 <span className="font-body text-[9px] text-text-secondary uppercase tracking-[0.25em] font-medium">
                   {time.label}
                 </span>
@@ -97,7 +91,6 @@ export default function Countdown() {
           </motion.div>
         )}
 
-        {/* Tombol Simpan ke Kalender */}
         <motion.a
           href={event.calendarUrl}
           target="_blank"
