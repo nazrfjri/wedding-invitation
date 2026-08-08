@@ -1,51 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="P&Z wedding monogram logo">
-  <defs>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#F7D98A"/>
-      <stop offset="0.5" stop-color="#D9A83E"/>
-      <stop offset="1" stop-color="#B98224"/>
-    </linearGradient>
-    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#A66BFF"/>
-      <stop offset="1" stop-color="#6C2BDA"/>
-    </linearGradient>
-  </defs>
-
-  <!-- transparent background; designed for favicon / invitation URL preview -->
-  <circle cx="256" cy="256" r="228" fill="none" stroke="url(#gold)" stroke-width="6"/>
-  <circle cx="256" cy="256" r="207" fill="none" stroke="url(#gold)" stroke-width="2" opacity=".55"/>
-
-  <!-- subtle decorative diamond -->
-  <path d="M256 56 L266 76 L286 86 L266 96 L256 116 L246 96 L226 86 L246 76 Z"
-        fill="url(#violet)"/>
-
-  <!-- P -->
-  <text x="218" y="324"
-        text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="190"
-        font-weight="400"
-        fill="#F4EBDD">P</text>
-
-  <!-- Z, slightly overlapping to create a monogram -->
-  <text x="303" y="324"
-        text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="190"
-        font-weight="400"
-        fill="url(#violet)">Z</text>
-
-  <!-- elegant ampersand -->
-  <text x="258" y="355"
-        text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="72"
-        font-style="italic"
-        fill="url(#gold)">&amp;</text>
-
-  <!-- tiny wedding divider -->
-  <path d="M176 386 C210 374 302 374 336 386"
-        fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="168" cy="389" r="4" fill="url(#gold)"/>
-  <circle cx="344" cy="389" r="4" fill="url(#gold)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-label="P and Z gold wedding monogram">
+  <title>P&amp;Z Gold Wedding Monogram</title>
+  <g fill="#B18A4A">
+    <path d="M585 494C585 552 564 599 523 634C480 671 417 689 336 689H33V658H127V31H33V0H311V31H218V299H302C384 299 450 314 500 345C557 380 585 430 585 494ZM482 491C483 434 465 392 426 363C394 338 353 326 304 326H218V658H324C431 658 478 607 482 491Z" transform="translate(145 458) scale(0.56 -0.56)"/>
+    <path d="M595 239C591 171 570 119 531 83C518 70 498 59 471 49C445 39 423 34 405 34L168 31L584 689L66 690L64 486H90C96 543 112 586 137 616C159 641 205 655 276 656L457 658L35 -1L614 0L627 239Z" transform="translate(402 458) scale(0.56 -0.56)"/>
+    <path d="M723 72C696 59 676 52 661 52C622 52 567 73 498 114C550 171 576 225 576 278C576 298 574 313 571 324C632 321 678 316 707 311C707 332 711 356 718 381L531 374C521 374 489 375 435 376L404 333C455 329 484 326 492 323C507 317 515 290 515 242C515 211 499 176 467 137C387 219 322 301 271 384C364 448 410 513 410 578C410 637 379 667 318 667C290 667 268 659 252 644L186 587C171 574 163 544 163 499C163 464 173 422 192 374C92 321 42 252 42 168C42 114 60 69 97 34C134 -1 183 -19 244 -19C311 -19 375 6 435 55C454 38 483 22 520 5C557 -11 586 -19 605 -19C626 -19 639 -17 644 -14L728 48ZM345 547C345 526 335 502 316 476C297 450 276 430 255 417C238 462 230 500 230 531C230 588 251 616 293 616C326 616 345 582 345 547ZM406 80C367 50 327 35 287 35C244 35 206 52 173 85C141 118 125 157 125 201C125 255 152 301 206 340C230 297 261 252 299 204C320 177 356 136 406 80Z" transform="translate(285 458) scale(0.42 -0.42)"/>
+  </g>
 </svg>
