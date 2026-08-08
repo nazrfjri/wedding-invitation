@@ -1,17 +1,15 @@
+// src/features/cover/Cover.jsx
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAudio } from '../../contexts/AudioContext';
 import { invitationData } from '../../data/invitations';
 import coverImage from '../../assets/images/couples/prewed-cover.webp';
-// 1. Import useEffect dan useState
 import { useEffect, useState } from 'react'; 
 
 export default function Cover({ isOpened, onOpen }) {
   const { playAudio } = useAudio();
   const { couple, event } = invitationData;
-  // 2. Buat state untuk nama tamu
   const [guestName, setGuestName] = useState("Tamu Undangan");
 
-  // 3. Tangkap parameter '?to=' dari URL browser
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const to = queryParams.get("to");
@@ -25,69 +23,96 @@ export default function Cover({ isOpened, onOpen }) {
     onOpen();
   };
 
-  const cinematicEase = [0.83, 0, 0.17, 1];
+  const premiumEase = [0.16, 1, 0.3, 1];
+  const exitEase = [0.83, 0, 0.17, 1];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.4 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: premiumEase } }
+  };
 
   return (
     <AnimatePresence>
       {!isOpened && (
         <motion.section
-          exit={{ opacity: 0, y: '-100%' }}
-          transition={{ duration: 1.4, ease: cinematicEase }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-end pb-16 max-w-md mx-auto w-full bg-cover bg-center text-text-light will-change-transform"
-          style={{ backgroundImage: `url(${coverImage})` }}
+          exit={{ opacity: 0, y: '-100%', filter: 'blur(10px)' }}
+          transition={{ duration: 1.2, ease: exitEase }}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-end pb-12 sm:pb-16 max-w-md mx-auto w-full text-text-light overflow-hidden bg-black"
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
+          <motion.div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center will-change-transform"
+            style={{ backgroundImage: `url(${coverImage})` }}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ scale: { duration: 12, ease: "easeOut" }, opacity: { duration: 1.5 } }}
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
 
           <motion.div 
             className="relative z-10 text-center flex flex-col items-center w-full px-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 1, ease: 'easeOut' }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            {/* --- Bagian Dynamic Guest Name --- */}
-            <div className="mb-10 flex flex-col items-center border-b border-white/20 pb-4 px-8">
-              <p className="font-body text-xs text-white/80 mb-2 tracking-widest uppercase">
-                Kepada Yth. Bapak/Ibu/Saudara/i
+            {/* Teks Pendukung: Micro-typography, Light, Wide Tracking */}
+            <motion.div variants={itemVariants} className="mb-12 flex flex-col items-center w-full">
+              <p className="font-body text-[9px] sm:text-[10px] font-light text-white/60 mb-3 tracking-[0.4em] uppercase">
+                Kepada Yth.
               </p>
-              <h2 className="font-heading text-2xl text-white font-bold tracking-wide capitalize">
+              <h2 className="font-heading text-lg sm:text-xl text-white/90 font-medium tracking-widest capitalize">
                 {guestName}
               </h2>
-            </div>
-            {/* --------------------------------- */}
+              <div className="w-10 h-[1px] bg-white/30 mt-5" />
+            </motion.div>
 
-            <p className="text-xs tracking-[0.2em] uppercase mb-4 font-body opacity-90">
+            <motion.p variants={itemVariants} className="text-[10px] font-light tracking-[0.3em] uppercase mb-6 font-body text-white/70">
               The Wedding Of
-            </p>
+            </motion.p>
             
-            {/* Menggunakan font-script (Great Vibes) */}
-            <h1 className="text-7xl sm:text-8xl font-script-4 mb-6 tracking-normal drop-shadow-lg leading-tight">
+            {/* Teks Utama: Massive, Elegant Script dipadu Serif Italic */}
+            <motion.h1 variants={itemVariants} className="text-7xl sm:text-8xl font-script-4 mb-2 tracking-normal drop-shadow-2xl leading-none">
               {couple.bride.nickname} 
               <br /> 
-              <span className="text-5xl font-script">&</span> 
+              <motion.span 
+                className="inline-block text-4xl sm:text-5xl font-heading italic text-white/80 my-4 font-light"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.5, duration: 1, ease: premiumEase }}
+              >
+                &
+              </motion.span> 
               <br />
               {couple.groom.nickname}
-            </h1>
+            </motion.h1>
             
-            <p className="text-sm tracking-[0.15em] font-body mb-12 opacity-90 drop-shadow-md">
+            <motion.p variants={itemVariants} className="text-[11px] font-light tracking-[0.4em] font-body mt-8 mb-14 text-white/80 uppercase">
               {event.coverDate}
-            </p>
+            </motion.p>
 
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleOpen}
-              className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-3.5 rounded-full flex items-center gap-3 font-body text-sm tracking-wide shadow-button transition-all hover:bg-white/20 hover:border-white/50"
+              className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/20 text-white/90 px-8 py-4 rounded-full flex items-center gap-4 font-body text-[11px] font-medium tracking-[0.2em] uppercase shadow-2xl transition-all duration-300"
             >
               Buka Undangan
-              <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                <motion.span
-                  animate={{ y: [0, 4, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                  className="block text-xs"
-                >
-                  ↓
-                </motion.span>
-              </span>
+              <motion.span
+                animate={{ y: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                className="block text-[10px] opacity-70"
+              >
+                ▼
+              </motion.span>
             </motion.button>
           </motion.div>
         </motion.section>

@@ -10,8 +10,8 @@ import Hero from './features/hero/Hero';
 // Lazy load komponen di bawah layar untuk optimalisasi performa awal
 const Countdown = lazy(() => import('./features/countdown/Countdown'));
 const LoveStory = lazy(() => import('./features/love-story/LoveStory'));
-const EventDetail = lazy(() => import('./features/event/EventDetail'));
-const Location = lazy(() => import('./features/location/Location'));
+const EventLocation = lazy(() => import('./features/event/EventLocation'));
+// const Location = lazy(() => import('./features/location/Location'));
 const Gallery = lazy(() => import('./features/gallery/Gallery'));
 const Gift = lazy(() => import('./features/gift/Gift'));
 const Rsvp = lazy(() => import('./features/rsvp/Rsvp'));
@@ -71,12 +71,12 @@ function App() {
             <Suspense fallback={<SectionLoader />}>
               <Countdown />
               <LoveStory />
-              <EventDetail />
-              <Location />
+              <EventLocation />
+              {/* <Location /> */}
               <Gallery />
-              <Wishes />
-              <Gift />
               <Rsvp />
+              <Gift />
+              <Wishes />
               <Closing />
             </Suspense>
           </div>

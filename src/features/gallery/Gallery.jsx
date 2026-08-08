@@ -1,97 +1,126 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
+// src/features/gallery/Gallery.jsx
+import { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Heart, Maximize2 } from 'lucide-react';
 import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css"; // Wajib di-import
+import "yet-another-react-lightbox/styles.css";
 import { invitationData } from '../../data/invitations';
 
 export default function Gallery() {
   const { gallery } = invitationData;
-  
-  // State untuk mengontrol Lightbox
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const containerVariant = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { staggerChildren: 0.15 } 
-    }
-  };
-
-  const itemVariant = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } }
-  };
+  
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  const yParallax = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   const openLightbox = (index) => {
-    setCurrentIndex(index);
+    // Gunakan modulo (%) agar index lightbox tetap valid sesuai jumlah foto asli
+    setCurrentIndex(index % gallery.length);
     setOpen(true);
   };
 
+  // Menggandakan array 3x agar aliran foto tidak pernah putus (Seamless Infinite Loop)
+  const infiniteGallery = [...gallery, ...gallery, ...gallery];
+
   return (
-    <section className="w-full py-20 px-6 bg-secondary overflow-hidden">
+    <section ref={sectionRef} className="w-full py-24 sm:py-32 bg-secondary overflow-hidden relative flex flex-col items-center">
+      
+      {/* 
+        Menyuntikkan CSS murni khusus untuk animasi berjalan.
+        Jauh lebih mulus dan tidak membebani memori HP dibanding animasi Javascript.
+      */}
+      <style>
+        {`
+          @keyframes infinite-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% / 3)); } 
+          }
+          .animate-infinite-scroll {
+            animation: infinite-scroll 35s linear infinite;
+          }
+          /* Berhenti saat disorot mouse (PC) atau ditahan sentuhannya (HP) */
+          .animate-infinite-scroll:hover,
+          .animate-infinite-scroll:active {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+
+      <div className="absolute top-1/2 left-0 w-full h-[80%] bg-gradient-to-b from-primary/5 via-accent/5 to-transparent blur-3xl pointer-events-none -translate-y-1/2" />
+
       <motion.div 
-        className="max-w-sm mx-auto flex flex-col items-center"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="text-center mb-16 sm:mb-20 flex flex-col items-center z-10 w-full px-6"
+        style={{ y: yParallax }}
       >
-        {/* Header */}
-        <div className="text-center mb-10 flex flex-col items-center">
-          <h2 className="font-heading text-4xl text-primary mb-3">
-            Our Gallery
-          </h2>
-          <Heart size={16} className="text-accent fill-accent/20" />
-        </div>
-
-        {/* Grid Foto */}
-        <motion.div 
-          className="grid grid-cols-2 gap-3 mb-10 w-full"
-          variants={containerVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-10%" }}
-        >
-          {gallery.map((image, index) => (
-            <motion.div 
-              key={index} 
-              variants={itemVariant}
-              className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-sm cursor-pointer border border-border-custom bg-surface group"
-              onClick={() => openLightbox(index)}
-            >
-              {/* Gambar sementara akan menggunakan background abu-abu jika file belum ada */}
-              <img 
-                src={image.src} 
-                alt={image.alt} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 bg-gray-200"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Tombol Lihat Semua (Opsional: Membuka Lightbox dari awal) */}
-        <button 
-          onClick={() => openLightbox(0)}
-          className="w-full border border-border-custom bg-surface text-primary py-3.5 rounded-full font-body text-sm tracking-wide shadow-sm transition-colors hover:bg-border-custom/30 active:scale-[0.98]"
-        >
-          Lihat Semua
-        </button>
-
+        <p className="font-body text-[10px] tracking-[0.4em] uppercase text-text-secondary mb-4">
+          Momen Bahagia
+        </p>
+        <h2 className="font-heading text-4xl sm:text-5xl text-primary mb-5 italic drop-shadow-sm">
+          Our Gallery
+        </h2>
+        <div className="w-12 h-[1px] bg-accent/60 mx-auto" />
       </motion.div>
 
-      {/* Komponen Lightbox (Swipe layar penuh) */}
+      <div 
+        className="w-full relative z-10" 
+        style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
+      >
+        {/* Kontainer Slider - Menggunakan kelas custom dari tag <style> di atas */}
+        <div className="flex gap-4 sm:gap-6 w-max animate-infinite-scroll px-4">
+          
+          {infiniteGallery.map((image, index) => {
+            const isEven = index % 2 === 0;
+            const marginTop = isEven ? 'mt-0' : 'mt-12 sm:mt-24';
+            
+            return (
+              <div 
+                key={index} 
+                className={`relative shrink-0 w-56 sm:w-80 rounded-[2rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer border border-primary/5 bg-surface group ${marginTop}`}
+                style={{ aspectRatio: isEven ? '3/4' : '4/5' }}
+                onClick={() => openLightbox(index)}
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none bg-gray-100"
+                  loading="lazy"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <Maximize2 size={16} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <motion.div 
+        className="mt-16 sm:mt-20 flex flex-col items-center gap-2 opacity-60 z-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.6 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.8, duration: 1 }}
+      >
+        <span className="font-body text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-medium">
+          Sorot atau tahan gambar untuk memperbesar
+        </span>
+      </motion.div>
+
       <Lightbox
         open={open}
         close={() => setOpen(false)}
         index={currentIndex}
         slides={gallery}
-        carousel={{ finite: false }} // Mengizinkan swipe berulang
-        styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
+        carousel={{ finite: false }} 
+        styles={{ container: { backgroundColor: "rgba(15, 12, 10, 0.95)" } }}
       />
     </section>
   );

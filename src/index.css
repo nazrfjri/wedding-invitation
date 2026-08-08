@@ -1,12 +1,7 @@
 @import "tailwindcss";
 
-/* Local Fonts */
-@import "@fontsource/inter";
-@import "@fontsource/playfair-display";
-@import "@fontsource/alex-brush";
-
-
 @theme {
+  /* Colors */
   --color-primary: #5A2E2E;
   --color-secondary: #F8F5F0;
   --color-accent: #B79D7B;
@@ -19,14 +14,17 @@
   
   --color-border-custom: #E7E2DA;
 
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
-  --font-script-4: "Alex Brush", cursive;
+  /* Modern Gen Z Typography */
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-script-4: "Pinyon Script", cursive;
 
+  /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
 
+  /* Shadows */
   --shadow-card: 0 10px 30px rgba(0,0,0,.08);
   --shadow-button: 0 8px 20px rgba(0,0,0,.15);
 }
@@ -46,4 +44,8 @@ body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
   overflow-x: hidden;
+  
+  /* Font Smoothing agar tulisan tipis terlihat premium dan tidak bergerigi */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

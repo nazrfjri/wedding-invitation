@@ -26,19 +26,26 @@ export default async function handler(req, res) {
       let totalTidakHadir = 0;
       
       rsvps.forEach(item => {
-        if (item.attendance === 'Hadir (1 Orang)') totalHadir += 1;
-        else if (item.attendance === 'Hadir (2 Orang)') totalHadir += 2;
-        else if (item.attendance === 'Tidak Hadir') totalTidakHadir += 1;
+        if (item.attendance === 'Hadir') {
+          // Menambahkan angka dari jumlahKehadiran (pastikan tipe datanya Number)
+          totalHadir += Number(item.jumlahKehadiran) || 0; 
+        } 
+        else if (item.attendance === 'Tidak Hadir') {
+          totalTidakHadir += 1;
+        }
       });
 
       res.status(200).json({ totalHadir, totalTidakHadir, totalData: rsvps.length });
     } 
     else if (req.method === 'POST') {
-      const { name, attendance, message } = req.body;
+      const { name, attendance, jumlahKehadiran, message } = req.body;
+      
       const newRsvp = {
         id: Date.now(),
         name,
         attendance,
+        // Jika tidak hadir, jumlah otomatis 0. Jika hadir, simpan angkanya.
+        jumlahKehadiran: attendance === 'Hadir' ? Number(jumlahKehadiran) : 0, 
         message,
         createdAt: new Date().toISOString()
       };
