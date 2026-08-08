@@ -35,7 +35,7 @@ export default function Location() {
             Cara: Buka Google Maps -> Cari Lokasi -> Share -> Embed a map -> Copy HTML
           */}
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d5639.7720383966025!2d107.51790997499026!3d-6.206465193781351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTInMjMuMyJTIDEwN8KwMzEnMTMuOCJF!5e1!3m2!1sen!2sid!4v1785999593149!5m2!1sen!2sid" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d352.48524481163525!2d107.52110358455435!3d-6.207223843123401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69645e4c0ee0cb%3A0x34e86f7f5dad1575!2sJl.%20Muktijaya%2C%20Muktijaya%2C%20Kec.%20Cilamaya%20Kulon%2C%20Karawang%2C%20Jawa%20Barat!5e1!3m2!1sid!2sid!4v1786163823980!5m2!1sid!2sid" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
