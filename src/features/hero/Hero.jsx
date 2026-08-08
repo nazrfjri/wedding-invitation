@@ -1,3 +1,4 @@
+// src/features/hero/Hero.jsx
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 import { invitationData } from '../../data/invitations';
@@ -48,12 +49,15 @@ export default function Hero() {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-x-hidden bg-background">      
+    <section ref={sectionRef} className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-x-hidden bg-background">
+      
+      {/* Ambient Glow Latar */}
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[120%] max-w-lg h-[500px] bg-primary/10 blur-[100px] rounded-full pointer-events-none -z-10"
       />
+
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-secondary to-transparent pointer-events-none z-0" />
 
       <motion.div 
@@ -96,13 +100,36 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <motion.div variants={itemVariant} className="relative flex flex-col items-center">
-          <h1 className="font-script-4 text-5xl sm:text-6xl text-primary mb-6 leading-tight">
-            {couple.bride.nickname} 
-            <span className="block text-2xl font-heading italic text-accent font-light my-2">dan</span> 
-            {couple.groom.nickname}
-          </h1>
+        <motion.div variants={itemVariant} className="relative flex flex-col items-center w-full px-2">
           
+          {/* --- DATA MEMPELAI WANITA --- */}
+          <div className="flex flex-col items-center text-center mb-5">
+            <h1 className="font-script-4 text-5xl sm:text-6xl text-primary leading-none">
+              {couple.bride.nickname}
+            </h1>
+            <h2 className="font-heading text-[11px] sm:text-[12px] text-primary tracking-[0.25em] mt-4 mb-2 uppercase font-medium">
+              {couple.bride.fullName}
+            </h2>
+            <p className="font-body text-[11px] text-text-secondary font-light leading-relaxed max-w-[260px]">
+              {couple.bride.parents}
+            </p>
+          </div>
+
+          <span className="block text-2xl font-heading italic text-accent font-light mb-5">&</span>
+
+          {/* --- DATA MEMPELAI PRIA --- */}
+          <div className="flex flex-col items-center text-center mb-10">
+            <h1 className="font-script-4 text-5xl sm:text-6xl text-primary leading-none">
+              {couple.groom.nickname}
+            </h1>
+            <h2 className="font-heading text-[11px] sm:text-[12px] text-primary tracking-[0.25em] mt-4 mb-2 uppercase font-medium">
+              {couple.groom.fullName}
+            </h2>
+            <p className="font-body text-[11px] text-text-secondary font-light leading-relaxed max-w-[260px]">
+              {couple.groom.parents}
+            </p>
+          </div>
+
           <p className="font-body text-[10px] font-medium tracking-[0.4em] text-text-secondary uppercase">
             {event.coverDate}
           </p>
