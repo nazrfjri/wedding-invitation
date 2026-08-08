@@ -48,17 +48,17 @@ export default function EventLocation() {
         </motion.div>
 
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {/* Card Akad Nikah */}
+          {/* Card Akad Nikah - DIBUAT CENTER */}
           <motion.div 
             variants={cardVariant} 
-            className="group relative overflow-hidden bg-surface/60 backdrop-blur-md p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 transition-all duration-500"
+            className="group relative overflow-hidden bg-surface/60 backdrop-blur-md p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 transition-all duration-500 flex flex-col items-center text-center"
           >
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-full blur-2xl group-hover:bg-accent/20 transition-colors duration-500" />
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary to-background flex items-center justify-center mb-6 shadow-sm border border-border-custom">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary to-background flex items-center justify-center mb-6 shadow-sm border border-border-custom relative z-10">
               <CalendarHeart className="text-accent" size={26} strokeWidth={1.5} />
             </div>
-            <h3 className="font-heading text-2xl text-primary mb-2 italic">Akad Nikah</h3>
-            <div className="space-y-1">
+            <h3 className="font-heading text-2xl text-primary mb-2 italic relative z-10">Akad Nikah</h3>
+            <div className="space-y-1 relative z-10">
               <p className="font-body text-[13px] text-text-primary font-medium tracking-wide">
                 {event.day}, {event.fullDate}
               </p>
@@ -68,17 +68,17 @@ export default function EventLocation() {
             </div>
           </motion.div>
 
-          {/* Card Resepsi */}
+          {/* Card Resepsi - DIBUAT CENTER */}
           <motion.div 
             variants={cardVariant} 
-            className="group relative overflow-hidden bg-surface/60 backdrop-blur-md p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 transition-all duration-500"
+            className="group relative overflow-hidden bg-surface/60 backdrop-blur-md p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 transition-all duration-500 flex flex-col items-center text-center"
           >
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary to-background flex items-center justify-center mb-6 shadow-sm border border-border-custom">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary to-background flex items-center justify-center mb-6 shadow-sm border border-border-custom relative z-10">
               <GlassWater className="text-accent" size={26} strokeWidth={1.5} />
             </div>
-            <h3 className="font-heading text-2xl text-primary mb-2 italic">Resepsi</h3>
-            <div className="space-y-1">
+            <h3 className="font-heading text-2xl text-primary mb-2 italic relative z-10">Resepsi</h3>
+            <div className="space-y-1 relative z-10">
               <p className="font-body text-[13px] text-text-primary font-medium tracking-wide">
                 {event.day}, {event.fullDate}
               </p>
