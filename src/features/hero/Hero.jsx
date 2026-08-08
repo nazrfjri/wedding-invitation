@@ -12,8 +12,11 @@ export default function Hero() {
     target: sectionRef,
     offset: ["start start", "end start"]
   });
-  const yText = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const opacityFade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  
+  // PERBAIKAN: Menahan opacity agar tetap 1 (solid) sampai scroll mencapai 50% (0.5)
+  // Jarak dorong parallax (yText) juga dikurangi dari 150 menjadi 80 agar tidak terlalu cepat turun
+  const yText = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const opacityFade = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 1, 0]);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -48,13 +51,17 @@ export default function Hero() {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center pt-24 pb-16 px-6 overflow-hidden bg-background">
+    <section ref={sectionRef} className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-x-hidden bg-background">
       
+      {/* Ambient Glow Latar */}
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[120%] max-w-lg h-[500px] bg-primary/10 blur-[100px] rounded-full pointer-events-none -z-10"
       />
+
+      {/* PERBAIKAN: z-index gradien diturunkan menjadi z-0 agar tidak menutupi teks saat teks terdorong ke bawah */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-secondary to-transparent pointer-events-none z-0" />
 
       <motion.div 
         className="flex flex-col items-center text-center z-10 w-full max-w-sm will-change-transform"
@@ -78,7 +85,6 @@ export default function Hero() {
           className="relative mb-16 p-[2px] rounded-[2rem] bg-gradient-to-b from-primary/20 to-transparent"
           style={{ perspective: 1000 }} 
         >
-          {/* Ubah bentuk dari lingkaran kaku (rounded-full) ke squircle/rounded-[2rem] ala desain iOS modern */}
           <motion.div
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
