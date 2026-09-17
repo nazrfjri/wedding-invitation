@@ -25,7 +25,7 @@ export default function EventLocation() {
       <div className="absolute -left-1/4 top-1/4 w-[150%] h-[600px] bg-gradient-to-tr from-accent/5 via-primary/5 to-transparent blur-3xl rounded-full pointer-events-none" />
 
       <motion.div 
-        className="w-full max-w-3xl flex flex-col items-center z-10"
+        className="w-full max-w-3xl md:max-w-5xl flex flex-col items-center z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-10%" }}
@@ -83,9 +83,9 @@ export default function EventLocation() {
 
         <motion.div 
           variants={cardVariant} 
-          className="w-full bg-surface rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-border-custom overflow-hidden relative"
+          className="w-full bg-surface rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-border-custom overflow-hidden relative flex flex-col md:flex-row"
         >
-          <div className="w-full h-64 sm:h-80 relative bg-secondary">
+          <div className="w-full md:w-1/2 h-64 sm:h-80 md:h-auto md:min-h-[400px] relative bg-secondary">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d352.48524481163525!2d107.52110358455435!3d-6.207223843123401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69645e4c0ee0cb%3A0x34e86f7f5dad1575!2sJl.%20Muktijaya%2C%20Muktijaya%2C%20Kec.%20Cilamaya%20Kulon%2C%20Karawang%2C%20Jawa%20Barat!5e1!3m2!1sid!2sid!4v1786163823980!5m2!1sid!2sid" 
               width="100%" 
@@ -97,10 +97,11 @@ export default function EventLocation() {
               title="Lokasi Pernikahan"
               className="absolute inset-0 grayscale-[30%] contrast-[95%] mix-blend-multiply opacity-80" 
             ></iframe>
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface to-transparent md:hidden" />
+            <div className="hidden md:block absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent" />
           </div>
 
-          <div className="p-8 sm:p-10 flex flex-col items-center text-center relative z-10 -mt-8">
+          <div className="w-full md:w-1/2 p-8 sm:p-10 flex flex-col items-center justify-center text-center relative z-10 -mt-8 md:mt-0">
             <div className="w-16 h-16 rounded-full bg-background flex items-center justify-center mb-6 shadow-sm border border-border-custom relative -mt-12">
               <MapPin className="text-primary" size={24} strokeWidth={1.5} />
             </div>

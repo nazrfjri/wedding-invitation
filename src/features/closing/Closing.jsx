@@ -23,7 +23,7 @@ export default function Closing() {
   return (
     <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center py-20 px-6 overflow-hidden bg-black">      
       <motion.div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center will-change-transform"
+        className="absolute inset-0 w-full h-full bg-cover bg-[center_30%] will-change-transform"
         style={{ backgroundImage: `url(${closingImage})` }}
         initial={{ scale: 1 }}
         whileInView={{ scale: 1.15 }}
@@ -33,7 +33,7 @@ export default function Closing() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/80" />
 
       <motion.div 
-        className="relative z-10 text-center flex flex-col items-center w-full max-w-lg"
+        className="relative z-10 text-center flex flex-col items-center w-full max-w-lg md:max-w-4xl"
         variants={containerVariant}
         initial="hidden"
         whileInView="visible"
@@ -41,7 +41,7 @@ export default function Closing() {
       >
         <motion.h2 
           variants={itemVariant} 
-          className="font-heading text-5xl sm:text-7xl text-white/95 mb-8 italic font-light drop-shadow-2xl tracking-wide"
+          className="font-heading text-5xl sm:text-7xl md:text-8xl text-white/95 mb-8 italic font-light drop-shadow-2xl tracking-wide"
         >
           {closing.thankYou}
         </motion.h2>
@@ -64,7 +64,7 @@ export default function Closing() {
 
         <motion.h3 
           variants={itemVariant} 
-          className="font-script-4 text-6xl sm:text-8xl text-white/95 drop-shadow-2xl flex flex-col items-center leading-none"
+          className="font-script-4 text-6xl sm:text-8xl md:text-9xl text-white/95 drop-shadow-2xl flex flex-col items-center leading-none"
         >
           {couple.bride.nickname} 
           <motion.span 

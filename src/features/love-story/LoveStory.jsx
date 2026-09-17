@@ -33,7 +33,7 @@ export default function LoveStory() {
       <div className="absolute top-0 right-0 w-[200%] h-[500px] bg-gradient-to-b from-primary/5 to-transparent blur-3xl rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
 
       <motion.div 
-        className="w-full max-w-3xl mx-auto flex flex-col items-center z-10"
+        className="w-full max-w-3xl md:max-w-5xl mx-auto flex flex-col items-center z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
@@ -76,7 +76,7 @@ export default function LoveStory() {
                   {getStoryIcon(index)}
                 </div>
 
-                <div className="bg-surface/60 backdrop-blur-sm p-6 sm:p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 transition-colors duration-500 text-left md:text-inherit">
+                <div className="bg-surface/60 backdrop-blur-sm p-6 sm:p-8 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-primary/5 hover:border-accent/30 hover:-translate-y-1 transition-all duration-500 text-left md:text-inherit">
                   <span className="font-heading text-xl sm:text-2xl italic font-light text-primary block mb-2 opacity-90">
                     {story.date}
                   </span>

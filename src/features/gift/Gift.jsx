@@ -21,7 +21,7 @@ export default function Gift() {
       <div className="absolute top-0 right-0 w-[150%] h-64 bg-gradient-to-b from-background to-transparent blur-2xl pointer-events-none -translate-y-1/2" />
 
       <motion.div 
-        className="w-full max-w-xl flex flex-col items-center text-center z-10"
+        className="w-full max-w-xl md:max-w-3xl flex flex-col items-center text-center z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}

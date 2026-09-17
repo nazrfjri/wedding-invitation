@@ -54,7 +54,7 @@ export default function Rsvp() {
   return (
     <section className="w-full py-24 px-6 bg-background flex flex-col items-center overflow-hidden">
       <motion.div 
-        className="w-full max-w-md"
+        className="w-full max-w-md md:max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}

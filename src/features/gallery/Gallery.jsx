@@ -59,7 +59,7 @@ export default function Gallery() {
       </motion.div>
 
       <div 
-        className="w-full relative z-10" 
+        className="w-full relative z-10 md:hidden" 
         style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
       >
         <div className="flex gap-4 sm:gap-6 w-max animate-infinite-scroll px-4">
@@ -93,8 +93,35 @@ export default function Gallery() {
         </div>
       </div>
 
+      <div className="hidden md:block w-full max-w-5xl mx-auto px-6 relative z-10">
+        <div className="columns-2 lg:columns-3 gap-6 space-y-6">
+          {gallery.map((image, index) => (
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="relative break-inside-avoid rounded-[2rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer border border-primary/5 bg-surface group"
+              onClick={() => openLightbox(index)}
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none bg-gray-100"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                <Maximize2 size={16} />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
       <motion.div 
-        className="mt-16 sm:mt-20 flex flex-col items-center gap-2 opacity-60 z-10"
+        className="mt-16 sm:mt-20 flex flex-col items-center gap-2 opacity-60 z-10 md:hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.6 }}
         viewport={{ once: true }}

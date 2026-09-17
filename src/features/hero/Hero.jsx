@@ -61,7 +61,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-secondary to-transparent pointer-events-none z-0" />
 
       <motion.div 
-        className="flex flex-col items-center text-center z-10 w-full max-w-sm will-change-transform"
+        className="flex flex-col items-center text-center z-10 w-full max-w-sm md:max-w-5xl will-change-transform"
         style={{ y: yText, opacity: opacityFade }}
         variants={containerVariant}
         initial="hidden"
@@ -77,11 +77,12 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        <motion.div 
-          variants={itemVariant} 
-          className="relative mb-16 p-[2px] rounded-[2rem] bg-gradient-to-b from-primary/20 to-transparent"
-          style={{ perspective: 1000 }} 
-        >
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-center gap-12 md:gap-24 w-full">
+          <motion.div 
+            variants={itemVariant} 
+            className="relative p-[2px] rounded-[2rem] bg-gradient-to-b from-primary/20 to-transparent"
+            style={{ perspective: 1000 }} 
+          >
           <motion.div
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -98,9 +99,9 @@ export default function Hero() {
             />
             <div className="absolute inset-0 bg-black/10 mix-blend-overlay pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           </motion.div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div variants={itemVariant} className="relative flex flex-col items-center w-full px-2">
+          <motion.div variants={itemVariant} className="relative flex flex-col items-center w-full max-w-md px-2">
           
           {/* --- DATA MEMPELAI WANITA --- */}
           <div className="flex flex-col items-center text-center mb-5">
@@ -130,10 +131,11 @@ export default function Hero() {
             </p>
           </div>
 
-          <p className="font-body text-[10px] font-medium tracking-[0.4em] text-text-secondary uppercase">
-            {event.coverDate}
-          </p>
-        </motion.div>
+            <p className="font-body text-[10px] font-medium tracking-[0.4em] text-text-secondary uppercase">
+              {event.coverDate}
+            </p>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

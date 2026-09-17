@@ -62,7 +62,7 @@ export default function Wishes() {
       <div className="absolute bottom-0 left-0 w-[150%] h-64 bg-gradient-to-t from-background to-transparent blur-2xl pointer-events-none translate-y-1/2 -translate-x-1/4" />
 
       <motion.div 
-        className="w-full max-w-lg flex flex-col items-center z-10"
+        className="w-full max-w-lg md:max-w-3xl flex flex-col items-center z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}

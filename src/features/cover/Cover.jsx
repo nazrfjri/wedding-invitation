@@ -44,10 +44,10 @@ export default function Cover({ isOpened, onOpen }) {
         <motion.section
           exit={{ opacity: 0, y: '-100%', filter: 'blur(10px)' }}
           transition={{ duration: 1.2, ease: exitEase }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-end pb-12 sm:pb-16 max-w-md mx-auto w-full text-text-light overflow-hidden bg-black"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-end pb-12 sm:pb-16 md:pb-24 w-full text-text-light overflow-hidden bg-black"
         >
           <motion.div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center will-change-transform"
+            className="absolute inset-0 w-full h-full bg-cover bg-[center_45%] will-change-transform"
             style={{ backgroundImage: `url(${coverImage})` }}
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -76,7 +76,7 @@ export default function Cover({ isOpened, onOpen }) {
               The Wedding Of
             </motion.p>
             
-            <motion.h1 variants={itemVariants} className="text-7xl sm:text-8xl font-script-4 mb-2 tracking-normal drop-shadow-2xl leading-none">
+            <motion.h1 variants={itemVariants} className="text-7xl sm:text-8xl md:text-9xl font-script-4 mb-2 tracking-normal drop-shadow-2xl leading-none">
               {couple.bride.nickname} 
               <br /> 
               <motion.span 

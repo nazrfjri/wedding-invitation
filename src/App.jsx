@@ -53,7 +53,7 @@ function App() {
 
   return (
     <AudioProvider>
-      <main className="max-w-md mx-auto w-full min-h-[100dvh] bg-background relative shadow-2xl overflow-x-hidden">
+      <main className="w-full min-h-[100dvh] bg-background relative overflow-x-hidden">
         
         <Cover isOpened={isOpened} onOpen={() => setIsOpened(true)} />
         

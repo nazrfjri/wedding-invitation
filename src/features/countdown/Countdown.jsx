@@ -46,7 +46,7 @@ export default function Countdown() {
       />
 
       <motion.div 
-        className="relative z-10 flex flex-col items-center w-full max-w-md"
+        className="relative z-10 flex flex-col items-center w-full max-w-md md:max-w-4xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-10%" }}
@@ -71,9 +71,9 @@ export default function Countdown() {
               { label: 'Detik', value: seconds }
             ].map((time, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="w-16 h-20 sm:w-20 sm:h-24 bg-surface/40 backdrop-blur-md rounded-[1.25rem] shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex items-center justify-center border border-primary/10 mb-4 relative overflow-hidden group">
+                <div className="w-16 h-20 sm:w-20 sm:h-24 md:w-28 md:h-32 bg-surface/40 backdrop-blur-md rounded-[1.25rem] shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex items-center justify-center border border-primary/10 mb-4 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <span className="font-heading text-3xl sm:text-4xl text-primary font-light">
+                  <span className="font-heading text-3xl sm:text-4xl md:text-5xl text-primary font-light">
                     {time.value.toString().padStart(2, '0')}
                   </span>
                 </div>
